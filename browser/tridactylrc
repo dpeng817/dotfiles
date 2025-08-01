@@ -1,0 +1,14 @@
+" General Settings
+set update.lastchecktime 1754003671375
+set configversion 2.0
+set editorcmd /Users/christopherdecarolis/tridactyl-vim.sh %f %l %c
+
+" Binds
+bind <C-i> composite editor | gi
+
+" Logging
+set logging.messaging undefined
+set logging.native undefined
+
+" For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
+" vim: set filetype=tridactyl

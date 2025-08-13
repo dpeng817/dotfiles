@@ -57,6 +57,8 @@ dotfiles/
 
 ## Development vs New Machine
 
-**For ongoing development:** Use `./link.sh` to create symlinks. Changes in apps automatically update the repo.
+**For ongoing development:** Use `./setup_symlinks.sh` to create symlinks. Changes in apps automatically update the repo.
 
-**For new machine setup:** Use `./deploy.sh` to copy files without symlinks. Follow the checklist above.
+**For new machine setup:** Use `./deploy_dotfiles.sh` to copy files without symlinks. Follow the checklist above.
+
+**To restore from backup:** Use `./restore_from_backup.sh` to restore files from a backup.

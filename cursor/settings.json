@@ -60,6 +60,34 @@
       "before": ["<leader>", "x"],
       "commands": ["editor.action.followLink"]
     },
+    {
+      "before": ["<leader>", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["<leader>", ","],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    {
+      "before": ["<leader>", "."],
+      "commands": ["workbench.action.navigateForward"]
+    },
+    {
+      "before": ["<leader>", "p"],
+      "commands": ["workbench.action.showCommands"]
+    },
+    {
+      "before": ["<leader>", "n"],
+      "commands": [
+        "explorer.newFile"
+      ]
+    },
+    {
+      "before": ["<leader>", "m"],
+      "commands": [
+        "explorer.newFolder"
+      ]
+    }
   ],
   "vim.leader": "<space>",
   "vim.handleKeys": {

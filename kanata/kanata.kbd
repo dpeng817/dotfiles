@@ -1,0 +1,48 @@
+;; Kanata configuration for homerow mods and custom keys
+;; Based on QMK configuration
+
+(defcfg
+  process-unmapped-keys yes
+  log-layer-changes no
+  ;; Try to avoid triggering keyboard setup
+  delegate-to-first-layer yes
+)
+
+(defsrc
+  tab  q    w    e    r    t    y    u    i    o    p    del
+  caps a    s    d    f    g    h    j    k    l    ;    '
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(defvar
+  ;; Timing for tap-hold actions - optimized for responsiveness
+  tap-time 150    ;; Reduced from 200ms - faster tap detection
+  hold-time 200   ;; Slightly increased hold time for better mod detection
+)
+
+(defalias
+  ;; Homerow mods (hold for modifier, tap for key) - using tap-hold-release for better responsiveness
+  a_cmd (tap-hold-release $tap-time $hold-time a lmet)
+  s_alt (tap-hold-release $tap-time $hold-time s lalt)
+  d_ctrl (tap-hold-release $tap-time $hold-time d lctl)
+  f_shift (tap-hold-release $tap-time $hold-time f lsft)
+
+  ;; Custom keys
+  w_screenshot (tap-hold $tap-time $hold-time w (multi lmet lsft 4))
+  e_alfred (tap-hold $tap-time $hold-time e (multi lmet spc))
+  r_homerow (tap-hold $tap-time $hold-time r (multi lmet lsft r))
+  y_ghostty (tap-hold $tap-time $hold-time y (multi lmet lalt y))
+  x_scroll (tap-hold $tap-time $hold-time x (multi lctl lmet lsft m))
+  c_search (tap-hold $tap-time $hold-time c (multi lctl lmet lsft f))
+
+  ;; Caps lock to escape (and optionally ctrl on hold)
+  caps_esc (tap-hold-release $tap-time $hold-time esc lctl)
+)
+
+(deflayer base
+  tab  q         @w_screenshot  @e_alfred     @r_homerow   t    @y_ghostty  u    i    o    p    del
+  @caps_esc @a_cmd    @s_alt         @d_ctrl       @f_shift     g    h           j    k    l    ;    '
+  lsft z         @x_scroll      @c_search     v            b    n           m    ,    .    /    rsft
+  lctl lmet lalt                spc                             ralt rmet rctl
+)

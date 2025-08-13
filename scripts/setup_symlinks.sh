@@ -77,6 +77,8 @@ link_to_dotfiles "$HOME/tridactyl-vim.sh" "browser/tridactyl-vim.sh"
 link_to_dotfiles "$HOME/Library/Application Support/Cursor/User/settings.json" "cursor/settings.json"
 link_to_dotfiles "$HOME/Library/Application Support/Alfred/Alfred.alfredpreferences" "alfred/Alfred.alfredpreferences"
 
+link_to_dotfiles "$HOME/.config/kanata/kanata.kbd" "kanata/kanata.kbd"
+
 log "Symlink setup complete!"
 log "Backup created at: $BACKUP_DIR"
 
@@ -86,6 +88,7 @@ echo "  • HomeRow - No config file, settings stored in app"
 echo "  • Alfred - Use Alfred's sync folder feature or export/import"
 echo "  • BetterTouchTool - Export presets manually from the app"
 echo "  • Homebrew packages - Run 'brew bundle dump' to create Brewfile"
+echo "  • Kanata - Need to install karabiner-driverkit, set up launchdaemons"
 
 echo ""
 log "Next steps:"

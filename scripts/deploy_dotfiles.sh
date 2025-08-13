@@ -56,7 +56,7 @@ deploy_from_dotfiles() {
     fi
     
     cp -r "$source" "$system_path"
-    log "Copied $source -> $system_path"
+    log "Copied $source -> system_path"
 }
 
 log "Starting dotfiles deployment..."
@@ -68,6 +68,7 @@ deploy_from_dotfiles "$HOME/.tridactylrc" "browser/tridactylrc"
 deploy_from_dotfiles "$HOME/tridactyl-vim.sh" "browser/tridactyl-vim.sh"
 deploy_from_dotfiles "$HOME/Library/Application Support/Cursor/User/settings.json" "cursor/settings.json"
 deploy_from_dotfiles "$HOME/Library/Application Support/Alfred/Alfred.alfredpreferences" "alfred/Alfred.alfredpreferences"
+deploy_from_dotfiles "$HOME/.config/kanata/kanata.kbd" "kanata/kanata.kbd"
 
 # Make tridactyl-vim.sh executable
 if [ -f "$HOME/tridactyl-vim.sh" ]; then

@@ -171,65 +171,52 @@ dotfiles/
 
 5. **Set up Kanata daemon**:
    ```bash
-   # Create wrapper script
-   sudo tee /usr/local/bin/kanata-wrapper.sh > /dev/null << 'EOF'
-   #!/bin/bash
-   export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.cargo/bin"
-   
-   # Wait for Karabiner-DriverKit to be ready
-   sleep 10
-   if ! pgrep -f "Karabiner-VirtualHIDDevice-Daemon" > /dev/null; then
-       echo "Waiting for Karabiner-DriverKit daemon to start..."
-       sleep 5
-   fi
-   sleep 5
-   
-   export DISPLAY=:0
-   exec $HOME/.cargo/bin/kanata --cfg $HOME/.config/kanata/kanata.kbd
-   EOF
-   
-   # Make executable
-   sudo chmod +x /usr/local/bin/kanata-wrapper.sh
-   sudo chown root:wheel /usr/local/bin/kanata-wrapper.sh
-   
    # Create the plist file (replace 'yourusername' with your actual username)
    sudo tee /Library/LaunchDaemons/com.kanata.daemon.plist > /dev/null << EOF
    <?xml version="1.0" encoding="UTF-8"?>
-   <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-   <plist version="1.0">
-   <dict>
-       <key>Label</key>
-       <string>com.kanata.daemon</string>
-       <key>ProgramArguments</key>
-       <array>
-           <string>/usr/local/bin/kanata-wrapper.sh</string>
-       </array>
-       <key>RunAtLoad</key>
-       <true/>
-       <key>KeepAlive</key>
-       <true/>
-       <key>StandardOutPath</key>
-       <string>/var/log/kanata-daemon.log</string>
-       <key>StandardErrorPath</key>
-       <string>/var/log/kanata-daemon.error.log</string>
-       <key>UserName</key>
-       <string>root</string>
-       <key>GroupName</key>
-       <string>wheel</string>
-       <key>ProcessType</key>
-       <string>Interactive</string>
-       <key>StartInterval</key>
-       <integer>30</integer>
-       <key>ThrottleInterval</key>
-       <integer>10</integer>
-       <key>EnvironmentVariables</key>
-       <dict>
-           <key>PATH</key>
-           <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/$(whoami)/.cargo/bin</string>
-       </dict>
-   </dict>
-   </plist>
-   EOF
+    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>com.kanata.daemon</string>
+
+        <key>ProgramArguments</key>
+        <array>
+            <string>/Users/christopherdecarolis/.cargo/bin/kanata</string>
+            <string>--cfg</string>
+            <string>/Users/christopherdecarolis/.config/kanata/kanata.kbd</string>
+        </array>
+
+        <key>RunAtLoad</key>
+        <true/>
+
+        <key>KeepAlive</key>
+        <true/>
+
+        <key>StandardOutPath</key>
+        <string>/var/log/kanata-daemon.log</string>
+
+        <key>StandardErrorPath</key>
+        <string>/var/log/kanata-daemon.error.log</string>
+
+        <key>UserName</key>
+        <string>root</string>
+
+        <key>GroupName</key>
+        <string>wheel</string>
+
+        <key>ProcessType</key>
+        <string>Interactive</string>
+
+        <key>EnvironmentVariables</key>
+        <dict>
+            <key>PATH</key>
+            <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/christopherdecarolis/.cargo/bin</string>
+        </dict>
+    </dict>
+    </plist>
+    EOF
+
    
    # Set permissions and load
    sudo chown root:wheel /Library/LaunchDaemons/com.kanata.daemon.plist

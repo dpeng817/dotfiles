@@ -17,6 +17,7 @@ bindkey '^R' history-incremental-search-backward
 bindkey "^[[3~" delete-char
 bindkey -M vicmd "^[[3~" delete-char
 bindkey -M viins "^[[3~" delete-char
+bindkey -M viins "^?" backward-delete-char
 
 ########################################################
 # aliases
@@ -60,5 +61,18 @@ export EDITOR=vim
 
 # turn off auto-update on homebrew
 export HOMEBREW_NO_AUTO_UPDATE=1
+
+# make tab accept autocomplete
+bindkey '^F' autosuggest-accept
+########################################################
+# activations
+########################################################
+
+# activate mine
+eval "$(/Users/christopherdecarolis/.local/bin/mise activate zsh)"
+
+# activate zsh autosuggestions
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 
 

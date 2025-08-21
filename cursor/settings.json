@@ -1,6 +1,6 @@
 {
   "window.commandCenter": true,
-  "workbench.colorTheme": "Cursor Dark High Contrast",
+  "workbench.colorTheme": "Monokai Dimmed",
   "editor.wordWrap": "on",
   "vim.easymotion": true,
   "vim.incsearch": true,
@@ -15,7 +15,7 @@
       ],
       "after": [
         "<Esc>"
-      ]
+      ],
     },
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
@@ -27,7 +27,15 @@
           "args": {
             "after": [":", "s", "/", "\\", "%", "V"]
           }
-        }
+        },
+        {
+          "before": ["d"],
+          "after": ["\"", "_", "d"]
+        },
+        {
+          "before": ["x"],
+          "after": ["\"", "_", "x"]
+        },as
       ]
     }
   ],
@@ -87,6 +95,22 @@
       "commands": [
         "explorer.newFolder"
       ]
+    },
+    {
+      "before": ["d"],
+      "after": ["\"", "_", "d"]
+    },
+    {
+      "before": ["D"],
+      "after": ["\"", "_", "D"]
+    },
+    {
+      "before": ["x"],
+      "after": ["\"", "_", "x"]
+    },
+    {
+      "before": ["X"],
+      "after": ["\"", "_", "X"]
     }
   ],
   "vim.leader": "<space>",

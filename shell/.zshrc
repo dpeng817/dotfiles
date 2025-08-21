@@ -25,7 +25,7 @@ bindkey -M viins "^?" backward-delete-char
 alias reload='source $HOME/.local/bin/env && source ~/.zshrc'
 # load the uv env in the current directory
 alias uve='source .venv/bin/activate'
-alias rootenv='pushd ~ && uve && popd'
+alias rootenv='(cd $HOME && source .venv/bin/activate)'
 # stoppls
 alias bg_stoppls='nohup python -m stoppls.cli run > stoppls.log 2>&1 & '
 alias stp='rootenv && bg_stoppls'
@@ -34,6 +34,11 @@ alias ez='vim $HOME/.zshrc'
 alias ed='vim $HOME/agent_context/DEVELOPMENT_STANDARDS.md'
 alias ep='vim $HOME/agent_context/languages/python.md'
 alias ev='vim $HOME/.vimrc'
+alias es='vim $HOME/.config/.env'
+alias gr='gt'
+alias dev='$HOME/.dpeng/exp-manager.sh'
+alias cl='claude --dangerously-skip-permissions'
+alias uvi="source $HOME/indent/.venv/bin/activate"
 
 ########################################################
 # nvm
@@ -46,12 +51,11 @@ export NVM_DIR="$HOME/.nvm"
 # python
 ########################################################
 # by default, use uv venv in the home directory
-pushd $HOME && uve && popd
-
+rootenv
 ########################################################
 # secrets
 ########################################################
-export $(cat $HOME/.config/.env | xargs)
+source $HOME/.config/.env
 
 ########################################################
 # settings

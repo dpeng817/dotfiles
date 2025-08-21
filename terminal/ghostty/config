@@ -46,3 +46,4 @@
 # Enable vim-style tab navigation
 keybind = g>t=next_tab
 keybind = g>shift+t=previous_tab
+keybind = shift+enter=text:\n
